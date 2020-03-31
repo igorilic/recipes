@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, email, password, **extra_fields):
         """creates and saves a new user"""
         if not email:
             raise ValueError('Users must have an email address')
@@ -32,4 +32,5 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
 
     objects = UserManager()
+
     USERNAME_FIELD = 'email'
